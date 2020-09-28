@@ -20,7 +20,9 @@
                     <!-- Sign Up Form -->
                     <!-- jQuery Validation functionality is initialized with .js-validation-signup class in js/pages/op_auth_signup.min.js which was auto compiled from _es6/pages/op_auth_signup.js -->
                     <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                    <form class="js-validation-signup" action="" method="post">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+
                         <div class="block block-themed block-rounded block-shadow">
                             <div class="block-header bg-corporate-dark">
                                 <h3 class="block-title">Please add your details</h3>
@@ -31,31 +33,58 @@
                                 </div>
                             </div>
                             <div class="block-content">
+                                <!-- Name -->
                                 <div class="form-group row">
                                     <div class="col-12">
-                                        <label for="signup-username">Username</label>
-                                        <input type="text" class="form-control" id="signup-username" name="signup-username" placeholder="eg: john_smith">
+                                        <label for="name">{{ __('Name') }}</label>
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
                                     </div>
                                 </div>
+                                <!-- End Name -->
+
+                                <!-- Email -->
                                 <div class="form-group row">
                                     <div class="col-12">
-                                        <label for="signup-email">Email</label>
-                                        <input type="email" class="form-control" id="signup-email" name="signup-email" placeholder="eg: john@example.com">
+                                        <label for="email">{{ __('E-Mail Address') }}</label>
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
+                                <!-- End Email -->
+
+                                <!-- Password -->
                                 <div class="form-group row">
                                     <div class="col-12">
-                                        <label for="signup-password">Password</label>
-                                        <input type="password" class="form-control" id="signup-password" name="signup-password" placeholder="********">
-                                    </div>
+                                        <label for="password">{{ __('Password') }}</label>
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-12">
-                                        <label for="signup-password-confirm">Password Confirmation</label>
-                                        <input type="password" class="form-control" id="signup-password-confirm" name="signup-password-confirm" placeholder="********">
-                                    </div>
+                                <!-- End Password -->
+
+                                <!-- Confirm Password -->
+                                <div class="col-12">
+                                    <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
-                                <div class="form-group row mb-0">
+                                <!-- End Confirm Password -->
+
+                                <div class="form-group row mb-0 mt-5">
                                     <div class="col-sm-6 push">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="signup-terms" name="signup-terms">
@@ -79,6 +108,7 @@
                                     </a>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     </form>
                     <!-- END Sign Up Form -->
