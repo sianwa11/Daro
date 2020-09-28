@@ -74,12 +74,12 @@ class RegisterController extends Controller
     }
 
     // redirect after successful registration
-    protected function register(Request $request)
+/*    protected function register(Request $request)
     {
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
 
         return redirect()->route('success'); // Will change this later
-    }
+    }*/
 }

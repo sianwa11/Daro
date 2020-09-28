@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 // login is the primary view temporarily
 Route::view('/', 'auth/login');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/success', 'success')->name('success'); // note the name() method.
