@@ -31,14 +31,17 @@
     <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
 </head>
 <body>
-    <div id="page-container">
+    <div id="page-container" class="sidebar-inverse side-scroll page-header-fixed page-header-inverse main-content-boxed">
+        <!-- Header -->
+        @include('layouts.header')
+        <!-- Header -->
+
         <!-- Main Container -->
         <main id="main-container">
             @yield('content')
         </main>
         <!-- END Main Container -->
-
-        </div>
+    </div>
     <!-- END Page Container -->
 
     <!-- Codebase Core JS -->

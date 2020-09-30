@@ -8,10 +8,6 @@
                 <div class="content content-full overflow-hidden">
                     <!-- Header -->
                     <div class="py-30 text-center">
-                        <a class="link-effect font-w700" href="#">
-                            <i class="si si-book-open"></i>
-                            <span class="font-size-xl text-primary-dark">{{config('app.name')}}</span>
-                        </a>
                         <h1 class="h4 font-w700 mt-30 mb-10">Create New Account</h1>
                         <h2 class="h5 font-w400 text-muted mb-0">We’re excited to have you on board!</h2>
                     </div>
@@ -33,6 +29,8 @@
                                 </div>
                             </div>
                             <div class="block-content">
+                                {{-- Hidden field for student role --}}
+                                <input type="hidden" name="role" value="student">
                                 <!-- Name -->
                                 <div class="form-group row">
                                     <div class="col-12">

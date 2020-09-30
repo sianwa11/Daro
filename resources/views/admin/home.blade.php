@@ -8,6 +8,6 @@
             </div>
         @endif
 
-        <p>Hello {{auth()->user()->name}}, you are logged in as student</p>
+        <p>Hello {{auth()->user()->name}}, you are logged in as admin</p>
     </div>
 @endsection
