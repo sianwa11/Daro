@@ -29,11 +29,13 @@
                                 </div>
                             </div>
                             <div class="block-content">
+
                                 <!-- Email -->
                                 <div class="form-group row">
                                     <div class="col-12">
                                         <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email" name="email">
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
+                                               value="{{old('email')}}" required autocomplete="email" autofocus>
                                     </div>
 
                                     @error('email')
@@ -48,7 +50,8 @@
                                 <div class="form-group row">
                                     <div class="col-12">
                                         <label for="password">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password">
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
+                                               name="password" required autocomplete="current-password">
                                     </div>
 
                                     @error('password')
@@ -61,8 +64,8 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-6 d-sm-flex align-items-center push">
                                         <div class="custom-control custom-checkbox mr-auto ml-0 mb-0">
-                                            <input type="checkbox" class="custom-control-input" id="login-remember-me" name="login-remember-me">
-                                            <label class="custom-control-label" for="login-remember-me">Remember Me</label>
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="remember">Remember Me</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 text-sm-right push">
@@ -77,9 +80,11 @@
                                     <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="{{ route('register') }}">
                                         <i class="fa fa-plus mr-5"></i> Create Account
                                     </a>
-                                    <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="">
-                                        <i class="fa fa-warning mr-5"></i> Forgot Password
-                                    </a>
+                                    @if (Route::has('password.request'))
+                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                            <i class="fa fa-warning mr-5"></i> Forgot Password
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

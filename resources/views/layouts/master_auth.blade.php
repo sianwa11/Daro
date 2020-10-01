@@ -31,7 +31,8 @@
     <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
 </head>
 <body>
-    <div id="page-container" class="sidebar-inverse side-scroll page-header-fixed page-header-inverse main-content-boxed">
+    <div id="page-container"
+         class="sidebar-inverse side-scroll page-header-fixed page-header-inverse main-content-boxed">
         <!-- Header -->
         @include('layouts.header')
         <!-- Header -->
