@@ -26,6 +26,7 @@ mix
 
     /* Page JS */
     .js('resources/js/pages/tables_datatables.js', 'public/js/pages/tables_datatables.js')
+    .js('resources/js/pages/be_pages_dashboard.js', 'public/js/pages/be_pages_dashboard.js')
 
     /* Tools */
     .browserSync('localhost:8000')

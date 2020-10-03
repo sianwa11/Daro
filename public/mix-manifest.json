@@ -7,5 +7,6 @@
     "/css/themes/elegance.css": "/css/themes/elegance.css",
     "/css/themes/flat.css": "/css/themes/flat.css",
     "/css/themes/pulse.css": "/css/themes/pulse.css",
+    "/js/pages/be_pages_dashboard.js": "/js/pages/be_pages_dashboard.js",
     "/js/pages/tables_datatables.js": "/js/pages/tables_datatables.js"
 }
