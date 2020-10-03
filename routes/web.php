@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 // login is the primary view temporarily
 Route::view('/', 'auth/login')->middleware('guest'); // access if guest
 

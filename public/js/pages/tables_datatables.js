@@ -105,9 +105,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  *  Description: Custom JS code used in Plugin Init Example Page
  */
 // DataTables, for more examples you can check out https://www.datatables.net/
-var pageTablesDatatables =
-/*#__PURE__*/
-function () {
+var pageTablesDatatables = /*#__PURE__*/function () {
   function pageTablesDatatables() {
     _classCallCheck(this, pageTablesDatatables);
   }

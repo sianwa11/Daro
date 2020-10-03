@@ -104,9 +104,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  *  Author     : pixelcave
  *  Description: Custom JS code used in Dashboard Page
  */
-var BePagesDashboard =
-/*#__PURE__*/
-function () {
+var BePagesDashboard = /*#__PURE__*/function () {
   function BePagesDashboard() {
     _classCallCheck(this, BePagesDashboard);
   }
