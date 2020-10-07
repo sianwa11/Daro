@@ -24,3 +24,10 @@ Route::view('/success', 'success')->name('success'); // note the name() method.
 
 Route::get('/a_home', '\App\Http\Controllers\Admin\HomeController@index')->middleware('role:admin');
 Route::get('/t_home', '\App\Http\Controllers\Teacher\HomeController@index')->middleware('role:teacher');
+
+// Profile controller
+Route::resource('profile', 'ProfileController');
+/*Route::get('/profile/create', [\App\Http\Controllers\ProfileController::class, 'create']);
+Route::post('/profile', [\App\Http\Controllers\ProfileController::class, 'store']);
+Route::get('/profile/{profile}', [\App\Http\Controllers\ProfileController::class, 'show']);
+Route::patch('/profile/{profile}', [\App\Http\Controllers\ProfileController::class, 'update']);*/
