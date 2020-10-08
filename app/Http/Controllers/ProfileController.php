@@ -37,7 +37,7 @@ class ProfileController extends Controller
 
         $bio_data = auth()->user()->user_biodata()->create($data);
 
-        return redirect('/profile/'.$bio_data->user_id);
+        return redirect('/profile/'.$bio_data->user_id)->with('success', 'Info successfully added!');
 
     }
 
@@ -53,7 +53,7 @@ class ProfileController extends Controller
         // update users profile
         auth()->user()->user_biodata()->update($this->validatedData());
 
-        return redirect('/profile/'.auth()->user()->id);
+        return redirect('/profile/'.auth()->user()->id)->with('toast_success', 'Successfully updated!');
     }
 
     public function edit()

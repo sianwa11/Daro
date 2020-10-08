@@ -1,7 +1,6 @@
 @extends('layouts.master_auth')
 
 @section('content')
-
     <!-- User Info -->
     <div class="bg-image bg-image-bottom"
          style="background-image: url('{{asset('/media/photos/photo13@2x.jpg')}}');">
