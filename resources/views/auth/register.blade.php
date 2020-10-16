@@ -28,85 +28,85 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="block-content">
-                                {{-- Hidden field for student role --}}
-                                <input type="hidden" name="role" value="student">
-                                <!-- Name -->
-                                <div class="form-group row">
-                                    <div class="col-12">
-                                        <label for="name">{{ __('Name') }}</label>
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <div class="block-content">
+                                    {{-- Hidden field for student role --}}
+                                    <input type="hidden" name="role" value="student">
+                                    <!-- Name -->
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <label for="name">{{ __('Name') }}</label>
+                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                        @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <!-- End Name -->
-
-                                <!-- Email -->
-                                <div class="form-group row">
-                                    <div class="col-12">
-                                        <label for="email">{{ __('E-Mail Address') }}</label>
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <!-- End Email -->
-
-                                <!-- Password -->
-                                <div class="form-group row">
-                                    <div class="col-12">
-                                        <label for="password">{{ __('Password') }}</label>
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                </div>
-                                <!-- End Password -->
-
-                                <!-- Confirm Password -->
-                                <div class="col-12">
-                                    <label for="password-confirm">{{ __('Confirm Password') }}</label>
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                                <!-- End Confirm Password -->
-
-                                <div class="form-group row mb-0 mt-5">
-                                    <div class="col-sm-6 push">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="signup-terms" name="signup-terms">
-                                            <label class="custom-control-label" for="signup-terms">I agree to Terms &amp; Conditions</label>
+                                            @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 text-sm-right push">
-                                        <button type="submit" class="btn btn-alt-success">
-                                            <i class="fa fa-plus mr-10"></i> Create Account
-                                        </button>
+                                    <!-- End Name -->
+
+                                    <!-- Email -->
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <label for="email">{{ __('E-Mail Address') }}</label>
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <!-- End Email -->
+
+                                    <!-- Password -->
+                                    <div class="form-group row">
+                                        <div class="col-12">
+                                            <label for="password">{{ __('Password') }}</label>
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                    </div>
+                                    <!-- End Password -->
+
+                                    <!-- Confirm Password -->
+                                    <div class="col-12">
+                                        <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    </div>
+                                    <!-- End Confirm Password -->
+
+                                    <div class="form-group row mb-0 mt-5">
+                                        <div class="col-sm-6 push">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="signup-terms" name="signup-terms">
+                                                <label class="custom-control-label" for="signup-terms">I agree to Terms &amp; Conditions</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 text-sm-right push">
+                                            <button type="submit" class="btn btn-alt-success">
+                                                <i class="fa fa-plus mr-10"></i> Create Account
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block-content bg-body-light">
+                                    <div class="form-group text-center">
+                                        <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="#" data-toggle="modal" data-target="#modal-terms">
+                                            <i class="fa fa-book text-muted mr-5"></i> Read Terms
+                                        </a>
+                                        <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="{{route('login')}}">
+                                            <i class="fa fa-user text-muted mr-5"></i> Sign In
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="block-content bg-body-light">
-                                <div class="form-group text-center">
-                                    <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="#" data-toggle="modal" data-target="#modal-terms">
-                                        <i class="fa fa-book text-muted mr-5"></i> Read Terms
-                                    </a>
-                                    <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="{{route('login')}}">
-                                        <i class="fa fa-user text-muted mr-5"></i> Sign In
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                         </div>
                     </form>
                     <!-- END Sign Up Form -->

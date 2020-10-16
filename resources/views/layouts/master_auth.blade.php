@@ -44,6 +44,8 @@
             @yield('content')
         </main>
         <!-- END Main Container -->
+
+        @yield('modals')
     </div>
     <!-- END Page Container -->
 

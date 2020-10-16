@@ -31,3 +31,6 @@ Route::resource('profile', 'ProfileController');
 Route::post('/profile', [\App\Http\Controllers\ProfileController::class, 'store']);
 Route::get('/profile/{profile}', [\App\Http\Controllers\ProfileController::class, 'show']);
 Route::patch('/profile/{profile}', [\App\Http\Controllers\ProfileController::class, 'update']);*/
+
+// VirtualClass controller
+Route::resource('virtual_class', 'VirtualClassController');

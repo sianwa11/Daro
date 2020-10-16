@@ -6,7 +6,7 @@
             <div class="content-header-section">
                 <!-- Logo -->
                 <div class="content-header-item">
-                    <a class="font-w700 mr-5" href="#">
+                    <a class="font-w700 mr-5" href="/">
                         <i class="si si-book-open"></i>
                         <span class="font-size-xl text-dual-primary-dark">{{ config('app.name') }}</span>
                     </a>
@@ -50,8 +50,16 @@
                                 <span><i class="si si-envelope-open mr-5"></i> Inbox</span>
                                 <span class="badge badge-primary">3</span>
                             </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="si si-note mr-5"></i> Invoices
+
+                            @isRole('teacher')
+                                {{-- Teachers only links --}}
+                                <a class="dropdown-item" href="/virtual_class" data-toggle="layout" data-action="side_overlay_toggle">
+                                    <i class="si si-drawer mr-5"></i> My Classes
+                                </a>
+                            @endisRole
+
+                            <a class="dropdown-item" href="/">
+                                <i class="si si-home mr-5"></i> Dashboard
                             </a>
                             <div class="dropdown-divider"></div>
 

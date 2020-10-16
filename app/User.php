@@ -41,4 +41,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(UserBiodata::class);
     }
+
+    public function virtual_class()
+    {
+        return $this->hasMany(VirtualClass::class);
+    }
 }

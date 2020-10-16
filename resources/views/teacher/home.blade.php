@@ -16,7 +16,7 @@
         <div class="content">
             <!-- Icon Navigation -->
             <div class="row gutters-tiny push">
-                <div class="col-6 col-md-4 col-xl-2">
+                <div class="col-6 col-md-4 col-xl-2" data-toggle="modal" data-target="#exampleModal">
                     <a class="block block-rounded block-bordered block-link-shadow text-center" href="javascript:void(0)">
                         <div class="block-content">
                             <p class="mt-5">
@@ -38,7 +38,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-xl-2">
-                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="javascript:void(0)">
+                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="{{route('virtual_class.index')}}">
                         <div class="block-content">
                             <p class="mt-5">
                                 <i class="si si-drawer fa-3x text-muted"></i>
@@ -83,13 +83,8 @@
         <!-- END Content -->
     </div>
     <!-- END Page Content -->
-{{--    <div class="card-body mt-20">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
+@endsection
 
-        <p>Hello {{auth()->user()->name}}, you are logged in as teacher</p>
-    </div>--}}
+@section('modals')
+    @include('teacher.modals.create_class')
 @endsection
