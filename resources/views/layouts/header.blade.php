@@ -56,6 +56,10 @@
                                 <a class="dropdown-item" href="/virtual_class" data-toggle="layout" data-action="side_overlay_toggle">
                                     <i class="si si-drawer mr-5"></i> My Classes
                                 </a>
+
+                                <a class="dropdown-item" href="/archived" data-toggle="layout" data-action="side_overlay_toggle">
+                                    <i class="fa fa-archive mr-5"></i> Archived Classes
+                                </a>
                             @endisRole
 
                             <a class="dropdown-item" href="/">

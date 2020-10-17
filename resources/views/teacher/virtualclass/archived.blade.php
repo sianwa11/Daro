@@ -7,14 +7,14 @@
         <nav class="breadcrumb mb-0">
             <span class="breadcrumb-item">
                 <a href="/"> <i class="si si-home"></i> Home</a>
-                <h2>My classes</h2>
+                <h2>Archived classes</h2>
             </span>
         </nav>
         {{-- End Breadcrumb --}}
 
         {{-- Class Cards --}}
-            <div class="row">
-                @forelse($virtual_classes as $classes)
+        <div class="row">
+            @forelse($archived_classes as $classes)
                 <div class="col-md-6 col-xl-3">
                     <div class="block block-themed text-center">
                         <div class="block-content block-content-full block-sticky-options pt-30 bg-primary-dark">
@@ -24,16 +24,12 @@
                                         <i class="fa fa-fw fa-ellipsis-v"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(27px, 28px, 0px);">
-                                        <a id="btnCopy" class="dropdown-item" href="javascript:void(0)">
-                                            <i class="fa fa-fw fa-copy mr-5"></i>Copy Invite Link
-                                        </a>
-                                        <button class="dropdown-item" data-toggle="modal" data-target="#modal-archive-{{$classes->id}}">
-                                            <i class="fa fa-fw fa-archive mr-5"></i>Archive
+                                        <button class="dropdown-item" data-toggle="modal" data-target="#modal-restore-{{$classes->id}}">
+                                            <i class="fa fa-fw fa-undo mr-5"></i>Restore
                                         </button>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="/virtual_class/{{$classes->id}}">
-                                            <i class="fa fa-fw fa-arrow-right mr-5"></i>Go to class
-                                        </a>
+                                        <button class="dropdown-item" data-toggle="modal" data-target="#modal-slideup">
+                                            <i class="text-danger fa fa-fw fa-trash mr-5"></i><b class="text-danger">Delete</b>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -53,22 +49,23 @@
                         </div>
                     </div>
                 </div>
-                    @include('teacher.modals.archive_class')
-                @empty
 
-                    <div class="content content-full">
-                        <div class="py-30 text-center">
-                            <div class="display-3 text-flat">
-                                <i class="fa fa-times-circle-o"></i> No Classes
-                            </div>
-                            <h2 class="h3 font-w400 text-muted mb-50">When you create a class on the Home page it comes here</h2>
+                @include('teacher.modals.restore_class')
+                @include('teacher.modals.delete_class')
+            @empty
+
+                <div class="content content-full">
+                    <div class="py-30 text-center">
+                        <div class="display-3 text-flat">
+                            <i class="fa fa-times-circle-o"></i> No Archived Classes
                         </div>
+                        <h2 class="h3 font-w400 text-muted mb-50">When you archive a class on the classes page it comes here</h2>
                     </div>
+                </div>
 
-                @endforelse
-            </div>
+            @endforelse
+        </div>
         {{-- End Class Cards--}}
     </div>
+
 @endsection
-
-

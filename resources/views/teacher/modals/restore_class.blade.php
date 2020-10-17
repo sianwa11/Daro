@@ -1,29 +1,26 @@
-{{-- COME TO THIS LATER!!! --}}
 <!-- Slide Up Modal -->
-<div class="modal fade" id="modal-archive-{{$classes->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-slideup" aria-hidden="true">
+<div class="modal fade" id="modal-restore-{{$classes->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-slideup" aria-hidden="true">
     <div class="modal-dialog modal-dialog-slideup" role="document">
         <div class="modal-content">
             <div class="block block-themed block-transparent mb-0">
                 <div class="block-header bg-primary-dark">
-                    <h3 class="block-title">Archive {{$classes->class_name}} ?</h3>
+                    <h3 class="block-title">Restore {{$classes->class_name}}? </h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                             <i class="si si-close"></i>
                         </button>
                     </div>
                 </div>
-                <form action="/virtual_class/{{$classes->id}}" method="post">
-                    @method('DELETE')
+                <form action="virtual_class/{{$classes->id}}/restore" method="post">
                     @csrf
                     <div class="block-content">
-                        <p class="text-danger">Once you archive a class it will no longer be visible to all participants together with its contents</p>
-                        <p>No changes can be made to the archived classes until the action is reverted</p>
-                        <p>The class will be moved to archived classes where you can undo the action</p>
+                        <p>You and all participants will be able to view this class</p>
+                        <p>This class will appear in the "My classes" page</p>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-alt-danger">
-                                <i class="fa fa-archive"></i> Archive
+                            <button type="submit" class="btn btn-alt-success">
+                                <i class="fa fa-undo"></i> Restore
                             </button>
                         </div>
                     </div>

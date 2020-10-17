@@ -85,13 +85,33 @@ class VirtualClassController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * But in this case do not actually destroy from DB
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        dd($id);
+        VirtualClass::where('id', $id)->update(array('suspended'=> 1));
+        return redirect('/virtual_class')->with('toast_success', 'Class archived');
+    }
+
+    public function archived()
+    {
+        // get classes where suspended = 1
+        $archived_classes = auth()->user()->virtual_class()->where('suspended', 1)->get();
+
+        return view('teacher.virtualclass.archived', compact('archived_classes'));
+    }
+
+    /**
+     * Restores archived classes.
+     * @param $id
+     */
+    public function restore($id)
+    {
+        VirtualClass::where('id', $id)->update(array('suspended' => 0));
+        return redirect('/archived')->with('toast_success', 'Class restored');
     }
 
     public function validatedData()
