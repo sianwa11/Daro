@@ -36,3 +36,4 @@ Route::patch('/profile/{profile}', [\App\Http\Controllers\ProfileController::cla
 Route::resource('virtual_class', 'VirtualClassController');
 Route::get('/archived','VirtualClassController@archived');
 Route::post('virtual_class/{virtual_class}/restore', 'VirtualClassController@restore');
+Route::post('virtual_class/{virtual_class}/delete', 'VirtualClassController@deletePermanently');

@@ -20,6 +20,7 @@ class CreateVirtualClassesTable extends Migration
             $table->string('description');
             $table->string('class_code');
             $table->boolean('suspended')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,5 +33,8 @@ class CreateVirtualClassesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('virtual_classes');
+        Schema::table('virtual_classes', function (Blueprint $table){
+            $table->dropSoftDeletes();
+        });
     }
 }

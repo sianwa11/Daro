@@ -27,7 +27,7 @@
                                         <button class="dropdown-item" data-toggle="modal" data-target="#modal-restore-{{$classes->id}}">
                                             <i class="fa fa-fw fa-undo mr-5"></i>Restore
                                         </button>
-                                        <button class="dropdown-item" data-toggle="modal" data-target="#modal-slideup">
+                                        <button class="dropdown-item" data-toggle="modal" data-target="#modal-delete-{{$classes->id}}">
                                             <i class="text-danger fa fa-fw fa-trash mr-5"></i><b class="text-danger">Delete</b>
                                         </button>
                                     </div>

@@ -98,7 +98,7 @@ class VirtualClassController extends Controller
 
     public function archived()
     {
-        // get classes where suspended = 1
+        // get classes where suspended == 1
         $archived_classes = auth()->user()->virtual_class()->where('suspended', 1)->get();
 
         return view('teacher.virtualclass.archived', compact('archived_classes'));
@@ -112,6 +112,18 @@ class VirtualClassController extends Controller
     {
         VirtualClass::where('id', $id)->update(array('suspended' => 0));
         return redirect('/archived')->with('toast_success', 'Class restored');
+    }
+
+    /**
+     * Permanently delete a virtual class.
+     * Teacher will not have access to the class no more
+     * @param $id
+     */
+    public function deletePermanently($id)
+    {
+        // set deleted_at to null
+        VirtualClass::where('id', $id)->delete();
+        return redirect('/archived')->with('toast_success', 'Deleted');
     }
 
     public function validatedData()
