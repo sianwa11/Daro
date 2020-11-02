@@ -26,14 +26,18 @@ Route::get('/a_home', '\App\Http\Controllers\Admin\HomeController@index')->middl
 Route::get('/t_home', '\App\Http\Controllers\Teacher\HomeController@index')->middleware('role:teacher');
 
 // Profile controller
-Route::resource('profile', 'ProfileController');
+Route::resource('profile', 'ProfileController')->middleware('auth');
 /*Route::get('/profile/create', [\App\Http\Controllers\ProfileController::class, 'create']);
 Route::post('/profile', [\App\Http\Controllers\ProfileController::class, 'store']);
 Route::get('/profile/{profile}', [\App\Http\Controllers\ProfileController::class, 'show']);
 Route::patch('/profile/{profile}', [\App\Http\Controllers\ProfileController::class, 'update']);*/
 
 // VirtualClass controller
-Route::resource('virtual_class', 'VirtualClassController');
+Route::resource('virtual_class', 'VirtualClassController')->middleware('role:teacher');
 Route::get('/archived','VirtualClassController@archived');
 Route::post('virtual_class/{virtual_class}/restore', 'VirtualClassController@restore');
 Route::post('virtual_class/{virtual_class}/delete', 'VirtualClassController@deletePermanently');
+
+// VirtualClass Posts controller
+Route::post('/virtual_class/{virtual_class}/virtual_class_posts', [\App\Http\Controllers\VirtualClassPostController::class, 'store']);
+Route::delete('/virtual_class_post/{virtual_class}/', [\App\Http\Controllers\VirtualClassPostController::class, 'destroy']);

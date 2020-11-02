@@ -16,4 +16,9 @@ class VirtualClass extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function virtual_class_post()
+    {
+        return $this->hasMany(VirtualClassPost::class);
+    }
 }

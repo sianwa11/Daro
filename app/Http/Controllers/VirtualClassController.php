@@ -56,7 +56,14 @@ class VirtualClassController extends Controller
     public function show($id)
     {
         $virtual_class = VirtualClass::find($id);
-        return view('teacher.virtualclass.show', compact('virtual_class'));
+
+        $class_posts = $virtual_class->virtual_class_post()->get(); // get the class posts
+
+//        return view('teacher.virtualclass.show', compact('virtual_class'));
+        return view('teacher.virtualclass.show',[
+            'virtual_class' => $virtual_class,
+            'class_posts' => $class_posts
+        ]);
     }
 
     /**
@@ -80,7 +87,7 @@ class VirtualClassController extends Controller
     public function update(Request $request, $id)
     {
         VirtualClass::where('id', $id)->update($this->validatedData());
-        return redirect('/virtual_class/'.$id)->with('success', 'Successfully updated!');
+        return redirect('/virtual_class/'.$id)->with('toast_success', 'Successfully updated!');
     }
 
     /**
