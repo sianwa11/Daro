@@ -101,6 +101,16 @@
     </header>
     <!-- END Header -->
 
+ {{-- Bruuh for some reason I have to put these here and idk why it's not working in master_auth--}}
  @section('js_after')
+     {{-- Laravel Scaffolding JS --}}
      <script src="{{ mix('js/laravel.app.js') }}"></script>
+
+     {{-- Page JS Plugins --}}
+     <script src="{{asset('js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+     <script src="{{asset('js/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+
+     {{-- Page JS Code --}}
+     <script src="{{asset('js/pages/tables_datatables.js')}}"></script>
  @endsection

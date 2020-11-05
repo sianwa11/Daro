@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\VirtualClass;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class VirtualClassController extends Controller
 {
@@ -16,8 +17,12 @@ class VirtualClassController extends Controller
     {
         // take a further look at the where later
         $virtual_classes = auth()->user()->virtual_class()->where('suspended', 0)->get();
+        $class_code = (string) Str::uuid(); // random class code (will be used in /virtual_class page)
 
-        return view('teacher.virtualclass.index', compact('virtual_classes'));
+        return view('teacher.virtualclass.index', [
+            'virtual_classes' => $virtual_classes,
+            'class_code' => $class_code,
+        ]);
     }
 
     /**
@@ -58,11 +63,12 @@ class VirtualClassController extends Controller
         $virtual_class = VirtualClass::find($id);
 
         $class_posts = $virtual_class->virtual_class_post()->get(); // get the class posts
-
+        $class_assignments = $virtual_class->virtual_class_assignment()->get(); // get class assignments
 //        return view('teacher.virtualclass.show', compact('virtual_class'));
         return view('teacher.virtualclass.show',[
             'virtual_class' => $virtual_class,
-            'class_posts' => $class_posts
+            'class_posts' => $class_posts,
+            'class_assignments' => $class_assignments
         ]);
     }
 

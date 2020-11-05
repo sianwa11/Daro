@@ -41,3 +41,10 @@ Route::post('virtual_class/{virtual_class}/delete', 'VirtualClassController@dele
 // VirtualClass Posts controller
 Route::post('/virtual_class/{virtual_class}/virtual_class_posts', [\App\Http\Controllers\VirtualClassPostController::class, 'store']);
 Route::delete('/virtual_class_post/{virtual_class}/', [\App\Http\Controllers\VirtualClassPostController::class, 'destroy']);
+
+// VirtualClass Assignments controller
+Route::get('/assignment/create/{virtual_class}', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'create'])->middleware('role:teacher');
+Route::post('/virtual_class/{virtual_class}/assignment', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'store']);
+Route::get('/assignment/{id}', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'show']);
+Route::patch('/assignment/{id}', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'update']);
+Route::delete('/assignment/{id}', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'destroy']);

@@ -21,4 +21,9 @@ class VirtualClass extends Model
     {
         return $this->hasMany(VirtualClassPost::class);
     }
+
+    public function virtual_class_assignment()
+    {
+        return $this->hasMany(VirtualClassAssignment::class);
+    }
 }

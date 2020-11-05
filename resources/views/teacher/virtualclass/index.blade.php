@@ -7,6 +7,10 @@
         <nav class="breadcrumb mb-0">
             <span class="breadcrumb-item">
                 <a href="/"> <i class="si si-home"></i> Home</a>
+                {{--- Create class button --}}
+                <button type="button" class="btn-block-option" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-plus-circle"></i> Create class
+                </button>
                 <h2>My classes</h2>
             </span>
         </nav>
@@ -69,6 +73,11 @@
             </div>
         {{-- End Class Cards--}}
     </div>
+
+    {{-- Modal to create class from this page --}}
+    @section('modals')
+        @include('teacher.modals.create_class')
+    @endsection
 @endsection
 
 
