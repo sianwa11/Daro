@@ -19,8 +19,9 @@ Route::view('/', 'auth/login')->middleware('guest'); // access if guest
 
 Auth::routes(['verify' => true]);
 
+//Student Controller
 Route::get('/home', 'HomeController@index')->name('home')->middleware('role:student');
-Route::view('/success', 'success')->name('success'); // note the name() method.
+Route::get('preview_class/{id}', [\App\Http\Controllers\HomeController::class, 'previewClass']);
 
 Route::get('/a_home', '\App\Http\Controllers\Admin\HomeController@index')->middleware('role:admin');
 Route::get('/t_home', '\App\Http\Controllers\Teacher\HomeController@index')->middleware('role:teacher');
@@ -48,3 +49,13 @@ Route::post('/virtual_class/{virtual_class}/assignment', [\App\Http\Controllers\
 Route::get('/assignment/{id}', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'show']);
 Route::patch('/assignment/{id}', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'update']);
 Route::delete('/assignment/{id}', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'destroy']);
+
+// JoinClass controller
+Route::post('/join_class/{id}', [\App\Http\Controllers\JoinClassController::class, 'joinClass']);
+
+// EnrolledClass controller
+Route::get('/myclasses', [\App\Http\Controllers\EnrolledClassController::class,'index']);
+Route::get('/class/{id}', [\App\Http\Controllers\EnrolledClassController::class, 'show']);
+Route::get('/class/{id}/assignments', [\App\Http\Controllers\EnrolledClassController::class, 'showAssignments']);
+Route::get('/class/{id}/classmates', [\App\Http\Controllers\EnrolledClassController::class, 'showClassmates']);
+Route::post('/class/{id}/assignment', [\App\Http\Controllers\EnrolledClassController::class, 'uploadAssignments']);

@@ -15,18 +15,21 @@
             </div>
             <!-- END Left Section -->
 
-            <!-- Middle Section -->
-            <div class="content-header-section">
-                <!-- Header Navigation -->
-                <!--Desktop Navigation, mobile navigation can be found in #sidebar-->
-
-                <!-- END Header Navigation -->
-            </div>
-            <!-- END Middle Section -->
-
             <!-- Right Section -->
             <div class="content-header-section">
                 @auth
+
+                    @isRole('student')
+                        <div class="btn-group">
+                            <form action="/myclasses">
+                                @csrf
+                                <button type="submit" class="btn btn-rounded btn-dual-secondary" >
+                                    <i class="fa fa-navicon"></i> My Classes
+                                </button>
+                            </form>
+                        </div>
+                    @endisRole
+
                     <!-- User Dropdown -->
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -89,28 +92,20 @@
         </div>
         <!-- END Header Content -->
 
-        <!-- Header Loader -->
-        <div id="page-header-loader" class="overlay-header bg-primary">
-            <div class="content-header content-header-fullrow text-center">
-                <div class="content-header-item">
-                    <i class="fa fa-sun-o fa-spin text-white"></i>
-                </div>
-            </div>
-        </div>
-        <!-- END Header Loader -->
     </header>
-    <!-- END Header -->
+ <!-- END Header -->
 
- {{-- Bruuh for some reason I have to put these here and idk why it's not working in master_auth--}}
- @section('js_after')
+ {{-- Bruuh for some reason I have to put these here and idk why it's not working in master_auth
+      I shall therefore comment out all the weird stuff--}}
+{{-- @section('js_after')--}}
      {{-- Laravel Scaffolding JS --}}
      <script src="{{ mix('js/laravel.app.js') }}"></script>
 
      {{-- Page JS Plugins --}}
-     <script src="{{asset('js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+{{--     <script src="{{asset('js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
      <script src="{{asset('js/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
 
-     {{-- Page JS Code --}}
-     <script src="{{asset('js/pages/tables_datatables.js')}}"></script>
- @endsection
+     --}}{{-- Page JS Code --}}{{--
+     <script src="{{asset('js/pages/tables_datatables.js')}}"></script>--}}
+{{-- @endsection--}}

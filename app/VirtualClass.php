@@ -26,4 +26,9 @@ class VirtualClass extends Model
     {
         return $this->hasMany(VirtualClassAssignment::class);
     }
+
+    public function virtual_class_students()
+    {
+        return $this->hasMany(VirtualClassStudent::class);
+    }
 }

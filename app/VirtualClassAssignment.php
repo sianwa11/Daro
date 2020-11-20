@@ -21,4 +21,9 @@ class VirtualClassAssignment extends Model
     {
         return $this->hasMany(AssignmentFiles::class);
     }
+
+    public function assignment_submissions()
+    {
+        return $this->hasMany(AssignmentSubmission::class);
+    }
 }
