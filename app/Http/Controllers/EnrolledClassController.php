@@ -79,7 +79,7 @@ class EnrolledClassController extends Controller
 
         if (\request()->hasFile('file'))
         {
-            $destination_path = 'public/assignment_submissions';
+            $destination_path = 'public/assignment_submissions/'.$assignment->title.'/user-'.auth()->user()->id.'/';
             $file = \request()->file('file');
             $file_name = $file->getClientOriginalName(); // get file name
             \request()->file('file')->storeAs($destination_path, $file_name);
