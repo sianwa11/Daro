@@ -13,7 +13,20 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->truncate(); // for cleaning earlier data and avoid duplicate entries
-        DB::table('users')->insert([
+
+        factory(\App\User::class, 1)->state('admin')->create(); // create 1 admin
+
+        factory(\App\User::class, 2)->state('student')->create(); // create 10 students
+
+        factory(\App\User::class, 2)->state('teacher')->create()
+            ->each(function (\App\User $teacher){
+               $teacher->virtual_class()->saveMany(factory(\App\VirtualClass::class, 3)->make());
+            }); // create 3 teachers with 3 classes each
+
+    }
+}
+
+/*        DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'role' => 'admin',
@@ -30,6 +43,5 @@ class UsersTableSeeder extends Seeder
             'email' => 'teacher1@gmail.com',
             'role' => 'teacher',
             'password' => Hash::make('password')
-        ]);
-    }
-}
+        ]);*/
+
