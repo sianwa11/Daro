@@ -16,12 +16,13 @@ class UsersTableSeeder extends Seeder
 
         factory(\App\User::class, 1)->state('admin')->create(); // create 1 admin
 
-        factory(\App\User::class, 2)->state('student')->create(); // create 10 students
-
         factory(\App\User::class, 2)->state('teacher')->create()
             ->each(function (\App\User $teacher){
-               $teacher->virtual_class()->saveMany(factory(\App\VirtualClass::class, 3)->make());
+                $teacher->virtual_class()->saveMany(factory(\App\VirtualClass::class, 3)->make());
             }); // create 3 teachers with 3 classes each
+
+        factory(\App\User::class, 10)->state('student')->create(); // create 10 students
+
 
     }
 }
