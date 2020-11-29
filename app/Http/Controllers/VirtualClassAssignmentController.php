@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\AssignmentFiles;
+use App\AssignmentMark;
+use App\AssignmentSubmission;
+use App\User;
 use App\VirtualClass;
 use App\VirtualClassAssignment;
 use Illuminate\Http\Request;
@@ -50,10 +53,90 @@ class VirtualClassAssignmentController extends Controller
 
     public function show($id)
     {
-        $assignment = VirtualClassAssignment::find($id);
+        $assignment = VirtualClassAssignment::find($id);// find the assignment
+        $class = VirtualClass::find($assignment->virtual_class_id); // the class the assignment belongs to
+
+        $submissions = $assignment->assignment_submissions();// get submissions of the assignment
+        $students = $class->virtual_class_students(); // students enrolled to the class
+
         return view('teacher.virtualclass.assignments.show',[
-            'assignment' => $assignment
+            'assignment' => $assignment,
+            'submissions' => $submissions->count(),
+            'students_assigned' => $students->count(),
         ]);
+    }
+
+    public function showSubmissions($id)
+    {
+        $assignment = VirtualClassAssignment::findOrFail($id);// find the assignment
+        $class = VirtualClass::findOrFail($assignment->virtual_class_id); // the class the assignment belongs to
+        $user_ids = $class->virtual_class_students()->pluck('user_id'); // get id's of users in the class
+
+        $students = User::whereIn('id', $user_ids)->get(); // fetch the students in the class
+        $submissions = $assignment->assignment_submissions()->get(); // fetch all submissions of the particular assignment
+
+        // ensure the collection is not empty
+        if ($submissions->isNotEmpty())
+        {
+            foreach ($submissions as $s)
+            {
+                $subArray[] = $s->toArray(); // convert the object to an array
+            }
+        }else
+        {
+            $subArray[] = 1; // dummy data
+        }
+
+        $marks = AssignmentMark::all(); // get all marked assignments & convert to array
+        if ($marks->isNotEmpty())
+        {
+            foreach ($marks as $m)
+            {
+                $marksArray[] = $m->toArray(); // convert the object to an array
+            }
+        }else
+        {
+            $marksArray[] = 1; // dummy data
+        }
+
+
+        return view('teacher.virtualclass.assignments.submissions.show',[
+            'students' => $students,
+            'subArray' => $subArray,
+            'submissions' => $submissions,
+            'assignment' => $assignment,
+            'marksArray' => $marksArray,
+            'marks' => $marks,
+        ]);
+    }
+
+    public function gradeAssignment($student_id, $assignment_id)
+    {
+        $data = \request()->validate([
+            'mark' => 'required|numeric|between:0,100'
+        ]);
+
+        $submission = AssignmentSubmission::where('virtual_class_assignment_id', $assignment_id)
+            ->where('user_id', $student_id)->first(); //  get the submission made
+
+        $submission->assignment_marks()->create($data); // add marks to the DB
+
+        return redirect()->back()->with('toast_success', 'Assignment Graded');
+
+    }
+
+    public function updateGradedAssignment($student_id, $assignment_id)
+    {
+        $data = \request()->validate([
+            'mark' => 'required|numeric|between:0,100'
+        ]);
+
+        $submission = AssignmentSubmission::where('virtual_class_assignment_id', $assignment_id)
+            ->where('user_id', $student_id)->first(); //  get the submission made
+
+        $submission->assignment_marks()->update($data); // edit the marks
+
+        return redirect()->back()->with('toast_success', 'Assignment grade updated');
     }
 
     public function update($id)

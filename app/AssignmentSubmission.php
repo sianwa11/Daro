@@ -13,4 +13,9 @@ class AssignmentSubmission extends Model
     {
         return $this->belongsTo(VirtualClassAssignment::class);
     }
+
+    public function assignment_marks()
+    {
+        return $this->hasOne(AssignmentMark::class);
+    }
 }

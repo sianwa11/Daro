@@ -49,6 +49,9 @@ Route::post('/virtual_class/{virtual_class}/assignment', [\App\Http\Controllers\
 Route::get('/assignment/{id}', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'show']);
 Route::patch('/assignment/{id}', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'update']);
 Route::delete('/assignment/{id}', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'destroy']);
+Route::get('/assignment/{id}/submissions', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'showSubmissions']);
+Route::post('/student/{student_id}/assignment/{assignment_id}/mark', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'gradeAssignment']);
+Route::patch('/student/{student_id}/assignment/{assignment_id}/', [\App\Http\Controllers\VirtualClassAssignmentController::class, 'updateGradedAssignment']);
 
 // JoinClass controller
 Route::post('/join_class/{id}', [\App\Http\Controllers\JoinClassController::class, 'joinClass']);

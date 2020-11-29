@@ -20,7 +20,8 @@
                             <i class="si si-clock mr-1"></i> <span class="text-success">Due {{$assignments->due_date}}, {{$assignments->time}}</span>
                         </a>
                     </div>
-                    <div id="accordion_q{{$assignments->id}}" class="collapse @if($loop->iteration == 1) show @endif" role="tabpanel" aria-labelledby="accordion_h{{$assignments->id}}" data-parent="#accordion">
+                    <div id="accordion_q{{$assignments->id}}" class="collapse" role="tabpanel" aria-labelledby="accordion_h{{$assignments->id}}" data-parent="#accordion">
+                        {{--@if($loop->iteration == 1) show @endif (REMOVED BY PREFERENCE)--}}
                         <div class="block-content">
                             <p class="text text-black h5"> Instructions: {{$assignments->instructions}}</p>
                             <p class="text text-black"> Assignment files below </p>

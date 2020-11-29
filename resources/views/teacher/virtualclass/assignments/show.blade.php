@@ -23,9 +23,12 @@
                     <i class="fa fa-trash"></i> Delete
                 </button>
 
-                <button type="button" class="btn btn-alt-success" data-toggle="modal" data-target="#">
-                    <i class="fa fa-download"></i> Submissions
-                </button>
+                <form action="/assignment/{{$assignment->id}}/submissions">
+                    @csrf
+                    <button type="submit" class="btn btn-alt-success">
+                        <i class="fa fa-upload"></i> Submissions
+                    </button>
+                </form>
             </div>
             <div class="block-content">
                 <p>{{$assignment->instructions}}</p>
@@ -38,7 +41,7 @@
                 <div class="block block-bordered block-rounded">
                     <div class="block-content block-content-full">
                         <div class="py-50 text-center">
-                            <div class="h2 mb-0">0 turned in</div>
+                            <div class="h2 mb-0">{{$submissions}} turned in</div>
                         </div>
                     </div>
                 </div>
@@ -47,7 +50,7 @@
                 <div class="block block-bordered block-rounded">
                     <div class="block-content block-content-full">
                         <div class="py-50 text-center">
-                            <div class="h2 mb-0">0 Assigned</div>
+                            <div class="h2 mb-0">{{$students_assigned}} Assigned</div>
                         </div>
                     </div>
                 </div>
