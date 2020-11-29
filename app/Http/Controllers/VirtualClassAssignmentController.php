@@ -28,7 +28,6 @@ class VirtualClassAssignmentController extends Controller
 
         // create a new assignment
         $assignment = $virtualClass->virtual_class_assignment()->create($data);
-
         if (\request()->hasFile('files'))
         {
             $files = \request()->file('files');
