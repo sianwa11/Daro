@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AssignmentFiles;
 use App\AssignmentMark;
 use App\AssignmentSubmission;
+use App\Notifications\AssignmentGraded;
 use App\User;
 use App\VirtualClass;
 use App\VirtualClassAssignment;
@@ -116,10 +117,16 @@ class VirtualClassAssignmentController extends Controller
             'mark' => 'required|numeric|between:0,100'
         ]);
 
+        // variables to be used in notification
+        $user = User::findOrFail($student_id); // get the student to notify
+        $mark = $data['mark'];
+        $assignment_title = VirtualClassAssignment::findOrFail($assignment_id)->title;
+
         $submission = AssignmentSubmission::where('virtual_class_assignment_id', $assignment_id)
             ->where('user_id', $student_id)->first(); //  get the submission made
 
         $submission->assignment_marks()->create($data); // add marks to the DB
+        $user->notify(new AssignmentGraded($mark, $assignment_title)); // notify the user
 
         return redirect()->back()->with('toast_success', 'Assignment Graded');
 

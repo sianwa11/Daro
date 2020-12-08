@@ -62,3 +62,6 @@ Route::get('/class/{id}', [\App\Http\Controllers\EnrolledClassController::class,
 Route::get('/class/{id}/assignments', [\App\Http\Controllers\EnrolledClassController::class, 'showAssignments']);
 Route::get('/class/{id}/classmates', [\App\Http\Controllers\EnrolledClassController::class, 'showClassmates']);
 Route::post('/class/{id}/assignment', [\App\Http\Controllers\EnrolledClassController::class, 'uploadAssignments']);
+
+// UserNotifications controller
+Route::get('/notifications', [\App\Http\Controllers\UserNotificationsController::class, 'show'])->middleware('role:student');

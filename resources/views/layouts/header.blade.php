@@ -20,6 +20,51 @@
                 @auth
 
                     @isRole('student')
+                        {{-- Notifications --}}
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span class="badge badge-primary badge-pill">{{auth()->user()->unreadNotifications()->count()}}</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right min-width-300" aria-labelledby="page-header-notifications">
+                                <h5 class="h6 text-center py-10 mb-0 border-b text-uppercase">Notifications</h5>
+                                <ul class="list-unstyled my-20">
+                                    @forelse(auth()->user()->unreadNotifications as $notification)
+                                        <li>
+                                            @if($notification->type == 'App\Notifications\AssignmentGraded')
+                                            <a class="text-body-color-dark media mb-15" href="/notifications">
+                                                <div class="ml-5 mr-15">
+                                                    <i class="fa fa-fw fa-check text-success"></i>
+                                                </div>
+                                                <div class="media-body pr-10">
+                                                    <p class="mb-0">{{$notification->data['assignment_title']}} graded</p>
+                                                    <p class="mb-0">Score: <strong>{{$notification->data['mark']}}/100.</strong></p>
+                                                    <div class="text-muted font-size-sm font-italic">{{$notification->created_at->diffForHumans()}}</div>
+                                                </div>
+                                            </a>
+                                            @endif
+                                        </li>
+                                    @empty
+                                        <li>
+                                            <a class="text-body-color-dark media mb-15">
+                                                <div class="ml-5 mr-15">
+                                                    <i class="fa fa-fw fa-smile-o text-primary-dark"></i>
+                                                </div>
+                                                <div class="media-body pr-10">
+                                                    <p class="mb-0">Wow, such empty</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endforelse
+                                </ul>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-center mb-0" href="/notifications">
+                                    <i class="fa fa-flag mr-5"></i> View All
+                                </a>
+                            </div>
+                        </div>
+                        {{-- End Notifications --}}
+
                         <div class="btn-group">
                             <form action="/myclasses">
                                 @csrf
