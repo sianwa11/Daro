@@ -5,6 +5,9 @@
     <div class="block">
         <div class="block-header block-header-default">
             <h3 class="block-title">Assignment submissions <small>.</small></h3>
+            <a class="text-center" href="/assignment/{{$assignment->id}}/chart" data-toggle="tooltip" data-placement="bottom" title="Grade statistics">
+                <i class="fa fa-line-chart fa-fw ml-10"></i>
+            </a>
         </div>
         <div class="block-content block-content-full">
             <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
@@ -87,11 +90,6 @@
 
 {{-- For the datatables in submissions table --}}
 @section('js_after')
-    <script src="{{asset('js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('js/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
-
-
-    {{-- Page JS Code --}}
-    <script src="{{asset('js/pages/tables_datatables.js')}}"></script>
+    @include('layouts.datatables.datatables_plugins')
 @endsection
 

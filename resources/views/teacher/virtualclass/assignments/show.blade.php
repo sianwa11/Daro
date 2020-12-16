@@ -37,7 +37,7 @@
         </div>
 
         <div class="row gutters-tiny">
-            <div class="col-sm-6">
+            <div class="col-xl-4">
                 <div class="block block-bordered block-rounded">
                     <div class="block-content block-content-full">
                         <div class="py-50 text-center">
@@ -46,7 +46,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-xl-4">
+                @if($students_assigned > 0)
+                <div class="js-pie-chart pie-chart" data-percent="{{($submissions * 100)/$students_assigned}}" data-line-width="5" data-size="100" data-bar-color="#9ccc65" data-track-color="#e9e9e9">
+                    <span>{{$submissions}}<br><small class="text-muted">/{{$students_assigned}}</small></span>
+                </div>
+                @else
+                <div class="js-pie-chart pie-chart" data-percent="0" data-line-width="5" data-size="100" data-bar-color="#9ccc65" data-track-color="#e9e9e9">
+                    <span>0<br><small class="text-muted">/0</small></span>
+                </div>
+                @endif
+            </div>
+            <div class="col-xl-4">
                 <div class="block block-bordered block-rounded">
                     <div class="block-content block-content-full">
                         <div class="py-50 text-center">
@@ -63,4 +74,8 @@
     @include('teacher.modals.edit_assignment')
     @include('teacher.modals.delete_assignment')
     {{-- End Modals --}}
+@endsection
+
+@section('js_after')
+    @include('layouts.piecharts.easypiechart')
 @endsection

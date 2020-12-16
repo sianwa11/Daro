@@ -31,6 +31,7 @@ class EnrolledClassController extends Controller
     public function show($id)
     {
         $class = VirtualClass::findOrFail($id); // The class
+        $class_assignments = VirtualClassAssignment::where('virtual_class_id', $class->id)->get();
         $teacher = User::findOrFail($class->user_id); // Teacher of the class
         $class_posts = VirtualClassPost::where('virtual_class_id', $class->id)->get(); // The class posts
 
@@ -38,7 +39,8 @@ class EnrolledClassController extends Controller
         return view('student.virtual_class.show', [
             'class' => $class,
             'teacher' => $teacher,
-            'class_posts' => $class_posts
+            'class_posts' => $class_posts,
+            'class_assignments' => $class_assignments
         ]);
     }
 

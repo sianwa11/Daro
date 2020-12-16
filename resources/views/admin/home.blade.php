@@ -17,7 +17,7 @@
             <!-- Icon Navigation -->
             <div class="row gutters-tiny push">
                 <div class="col-6 col-md-4 col-xl-2">
-                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="javascript:void(0)">
+                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="{{action('Admin\TeacherController@index')}}">
                         <div class="block-content">
                             <p class="mt-5">
                                 <i class="si si-briefcase fa-3x text-muted"></i>
@@ -27,7 +27,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-xl-2">
-                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-primary text-center" href="javascript:void(0)">
+                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-primary text-center" href="#">
                         <div class="ribbon-box">5</div>
                         <div class="block-content">
                             <p class="mt-5">
@@ -38,7 +38,7 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-xl-2">
-                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="javascript:void(0)">
+                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="{{action('Admin\StudentController@index')}}">
                         <div class="block-content">
                             <p class="mt-5">
                                 <i class="si si-users fa-3x text-muted"></i>
@@ -48,28 +48,28 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-xl-2">
-                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="javascript:void(0)">
+                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="{{action('Admin\ClassesController@index')}}">
                         <div class="block-content">
                             <p class="mt-5">
                                 <i class="si si-bar-chart fa-3x text-muted"></i>
                             </p>
-                            <p class="font-w600">Statistics</p>
+                            <p class="font-w600">Classes</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-xl-2">
-                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-primary text-center" href="javascript:void(0)">
-                        <div class="ribbon-box">3</div>
+                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-primary text-center"
+                       href="{{action('Admin\DownloadHistoryController@index')}}">
                         <div class="block-content">
                             <p class="mt-5">
                                 <i class="si si-cloud-download fa-3x text-muted"></i>
                             </p>
-                            <p class="font-w600">Downloads</p>
+                            <p class="font-w600">Download History</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-xl-2">
-                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="javascript:void(0)">
+                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="{{action('Admin\DocumentController@index')}}">
                         <div class="block-content">
                             <p class="mt-5">
                                 <i class="si si-docs fa-3x text-muted"></i>
@@ -84,13 +84,4 @@
         <!-- END Content -->
     </div>
     <!-- END Page Content -->
-{{--    <div class="card-body mt-20">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        <strong>Hello {{auth()->user()->name}}, you are logged in as admin</strong>
-    </div>--}}
 @endsection

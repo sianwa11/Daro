@@ -65,3 +65,33 @@ Route::post('/class/{id}/assignment', [\App\Http\Controllers\EnrolledClassContro
 
 // UserNotifications controller
 Route::get('/notifications', [\App\Http\Controllers\UserNotificationsController::class, 'show'])->middleware('role:student');
+
+// AssignmentChart controller
+Route::get('/assignment/{id}/chart', [\App\Http\Controllers\AssignmentChartController::class, 'index'])->middleware('auth');
+
+// Admin/Student controller
+Route::get('/students', [\App\Http\Controllers\Admin\StudentController::class, 'index']);
+Route::get('/student_export_csv', [\App\Http\Controllers\Admin\StudentController::class, 'export_csv']);
+// will be used to suspend both teacher and student -- OOPS
+Route::delete('/suspend_user/{id}', [\App\Http\Controllers\Admin\StudentController::class, 'suspend_user']);
+Route::patch('/restore_user/{id}', [\App\Http\Controllers\Admin\StudentController::class, 'restore_user']);
+
+// Admin/Teacher controller
+Route::get('/teachers', [\App\Http\Controllers\Admin\TeacherController::class, 'index']);
+Route::get('teacher_export_csv', [\App\Http\Controllers\Admin\TeacherController::class, 'export_csv']);
+
+//Admin/Statistics controller
+Route::get('/classes', [\App\Http\Controllers\Admin\ClassesController::class, 'index']);
+
+// Download History Controller
+Route::get('/download_history', [\App\Http\Controllers\Admin\DownloadHistoryController::class, 'index'])->middleware('role:admin');
+Route::get('/oops', [\App\Http\Controllers\Admin\DownloadHistoryController::class, 'oops']);
+
+// Admin/Documents controller
+Route::get('/documents', [\App\Http\Controllers\Admin\DocumentController::class, 'index'])->middleware('role:admin');
+
+//Teacher/Documents controller
+Route::get('/class_documents', [\App\Http\Controllers\Teacher\DocumentController::class, 'index'])->middleware('role:teacher');
+
+//Teacher/ClassStats controller
+Route::get('class_stats', [\App\Http\Controllers\Teacher\ClassStatsController::class, 'index'])->middleware('role:teacher');

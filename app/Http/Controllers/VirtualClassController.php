@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\VirtualClass;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -25,15 +26,11 @@ class VirtualClassController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+/*    public function create()
     {
         //
-    }
+    }*/
 
     // Store a newly created resource in storage.
     public function store(Request $request)
@@ -64,11 +61,16 @@ class VirtualClassController extends Controller
 
         $class_posts = $virtual_class->virtual_class_post()->get(); // get the class posts
         $class_assignments = $virtual_class->virtual_class_assignment()->get(); // get class assignments
-//        return view('teacher.virtualclass.show', compact('virtual_class'));
-        return view('teacher.virtualclass.show',[
+        $student_ids = $virtual_class->virtual_class_students()
+            ->get()->pluck('user_id'); // get students enrolled in that class
+
+        $students = User::whereIn('id', $student_ids)->get();
+
+        return view('teacher.virtualclass.show', [
             'virtual_class' => $virtual_class,
             'class_posts' => $class_posts,
-            'class_assignments' => $class_assignments
+            'class_assignments' => $class_assignments,
+            'students' => $students
         ]);
     }
 

@@ -38,7 +38,7 @@ class VirtualClassAssignmentController extends Controller
             foreach ($files as $file)
             {
                 $fileName = $file->getClientOriginalName(); // get Filename
-                $file->storeAs('public/assignment_files', $fileName); // Store in path
+                $file->storeAs('public/class-'.$virtualClass->id.'/assignment-'.$assignment->id.'/files', $fileName); // Store in path
                 // store file name in database
                 AssignmentFiles::create([
                     'virtual_class_assignment_id' => $assignment->id,

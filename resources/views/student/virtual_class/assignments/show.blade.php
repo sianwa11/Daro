@@ -17,7 +17,11 @@
                             <i class="si si-notebook mr-1"></i>{{$assignments->title}}
                         </a>
                         <a class="font-w600">
-                            <i class="si si-clock mr-1"></i> <span class="text-success">Due {{$assignments->due_date}}, {{$assignments->time}}</span>
+                            @if(\Carbon\Carbon::now()->greaterThan(\Carbon\Carbon::parse($assignments->due_date)->format('Y-m-d')))
+                                <i class="si si-clock mr-1"></i> <span class="text-danger">Due {{$assignments->due_date}}, {{$assignments->time}}</span>
+                            @else
+                                <i class="si si-clock mr-1"></i> <span class="text-success">Due {{$assignments->due_date}}, {{$assignments->time}}</span>
+                            @endif
                         </a>
                     </div>
                     <div id="accordion_q{{$assignments->id}}" class="collapse" role="tabpanel" aria-labelledby="accordion_h{{$assignments->id}}" data-parent="#accordion">
@@ -26,7 +30,8 @@
                             <p class="text text-black h5"> Instructions: {{$assignments->instructions}}</p>
                             <p class="text text-black"> Assignment files below </p>
                             @forelse($assignments->assignment_files as $files)
-                                <a class="block" href="{{asset('storage/assignment_files/'.$files->files)}}" target="_blank">
+                                <a class="block" href="{{asset('storage/class-'.$assignments->virtual_class_id.
+                                    '/assignment-'.$assignments->id.'/files/'.$files->files)}}" target="_blank">
                                     <i class="fa fa-folder-open mr-5 mb-5"></i> {{$files->files}}
                                 </a>
                             @empty

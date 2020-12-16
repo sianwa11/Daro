@@ -48,12 +48,12 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-xl-2">
-                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="javascript:void(0)">
+                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="{{action('Teacher\ClassStatsController@index')}}">
                         <div class="block-content">
                             <p class="mt-5">
-                                <i class="si si-users fa-3x text-muted"></i>
+                                <i class="si si-pie-chart fa-3x text-muted"></i>
                             </p>
-                            <p class="font-w600">Students</p>
+                            <p class="font-w600">Class Stats</p>
                         </div>
                     </a>
                 </div>
@@ -68,12 +68,12 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-xl-2">
-                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="javascript:void(0)">
+                    <a class="block block-rounded block-bordered block-link-shadow text-center" href="{{action('Teacher\DocumentController@index')}}">
                         <div class="block-content">
                             <p class="mt-5">
-                                <i class="si si-docs fa-3x text-muted"></i>
+                                <i class="si si-info fa-3x text-muted"></i>
                             </p>
-                            <p class="font-w600">Documents</p>
+                            <p class="font-w600">Class Info</p>
                         </div>
                     </a>
                 </div>

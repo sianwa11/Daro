@@ -19,7 +19,7 @@
                 {{-- Due Assignments --}}
                 <div class="block block-rounded">
                     <div class="block-header">
-                        <h3 class="block-title font-w600">Almost Due</h3>
+                        <h3 class="block-title font-w600">Reminder</h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
                                 <i class="si si-refresh"></i>
@@ -30,16 +30,17 @@
                         </div>
                     </div>
                     <div class="block-content">
-                        <a class="font-w600" href="javascript:void(0)">#laravelnews</a>
-                        <p class="text-muted">29.3k Updates</p>
-                        <a class="font-w600" href="javascript:void(0)">#reactjs</a>
-                        <p class="text-muted">25.8k Updates</p>
-                        <a class="font-w600" href="javascript:void(0)">#angular</a>
-                        <p class="text-muted">19.3k Updates</p>
-                        <a class="font-w600" href="javascript:void(0)">#pcnews</a>
-                        <p class="text-muted">18.6k Updates</p>
-                        <a class="font-w600" href="javascript:void(0)">#webdesign2018</a>
-                        <p class="text-muted">17.2k Updates</p>
+                        @forelse($class_assignments as $assignment)
+                            <a class="font-w600" href="javascript:void(0)">{{$assignment->title}}</a>
+                            @if(\Carbon\Carbon::now()->greaterThan(\Carbon\Carbon::parse($assignment->due_date)->format('Y-m-d')))
+                                <p class="text-danger">Due {{\Carbon\Carbon::parse($assignment->due_date)->format('Y-m-d')}}</p>
+                            @else
+                                <p class="text-black">Due {{\Carbon\Carbon::parse($assignment->due_date)->format('Y-m-d')}}</p>
+                            @endif
+
+                        @empty
+
+                        @endforelse
                     </div>
                 </div>
                 {{-- End Due Assignments --}}
