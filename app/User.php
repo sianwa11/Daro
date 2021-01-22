@@ -53,4 +53,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(DownloadHistory::class);
     }
+
+    public function video_chat()
+    {
+        return $this->hasMany(VideoChat::class);
+    }
 }

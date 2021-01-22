@@ -22,6 +22,17 @@
                                 </div>
                             </li>
                         @endif
+                        @if($notification->type == 'App\Notifications\VideoChatStarted')
+                                <li>
+                                    <div class="list-timeline-time">{{$notification->created_at->diffForHumans()}}</div>
+                                    <i class="list-timeline-icon fa fa-check bg-info"></i>
+                                    <div class="list-timeline-content">
+                                        <a class="" href="/receiver">
+                                        <p class="font-w600">Meeting has started, copy password: {{$notification->data['video_chat_password']}}</p>
+                                        </a>
+                                    </div>
+                                </li>
+                        @endif
                     @empty
                         <div class="list-timeline-content">
                             <p class="font-w600">You currently have no notifications</p>

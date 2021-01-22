@@ -95,3 +95,12 @@ Route::get('/class_documents', [\App\Http\Controllers\Teacher\DocumentController
 
 //Teacher/ClassStats controller
 Route::get('class_stats', [\App\Http\Controllers\Teacher\ClassStatsController::class, 'index'])->middleware('role:teacher');
+
+//VideoChat controller
+Route::get('/video_chat', [\App\Http\Controllers\VideoChatController::class, 'index'])->middleware('role:teacher');
+Route::get('/receiver', [\App\Http\Controllers\VideoChatController::class, 'receiver'])->middleware('role:student');
+Route::get('/save_video_chat', [\App\Http\Controllers\VideoChatController::class, 'saveVideoChat']);
+Route::get('/end_video_chat', [\App\Http\Controllers\VideoChatController::class, 'endVideoChat']);
+
+// Teacher/Meeting history
+Route::get('/meeting_history', [\App\Http\Controllers\Teacher\MeetingHistoryController::class, 'index']);

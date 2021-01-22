@@ -27,13 +27,12 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-xl-2">
-                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-primary text-center" href="javascript:void(0)">
-                        <div class="ribbon-box">5</div>
+                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-primary text-center" href="{{action('Teacher\MeetingHistoryController@index')}}">
                         <div class="block-content">
                             <p class="mt-5">
-                                <i class="si si-envelope fa-3x text-muted"></i>
+                                <i class="fa fa-history fa-3x text-muted"></i>
                             </p>
-                            <p class="font-w600">Inbox</p>
+                            <p class="font-w600">Meeting History</p>
                         </div>
                     </a>
                 </div>
@@ -58,12 +57,13 @@
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-xl-2">
-                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-primary text-center" href="javascript:void(0)">
+                    <a class="block block-rounded block-bordered block-link-shadow ribbon ribbon-primary text-center"
+                       href="{{action('VideoChatController@index')}}" target="_blank">
                         <div class="block-content">
                             <p class="mt-5">
                                 <i class="si si-camcorder fa-3x text-muted"></i>
                             </p>
-                            <p class="font-w600">Start Stream</p>
+                            <p class="font-w600">Video Chat</p>
                         </div>
                     </a>
                 </div>

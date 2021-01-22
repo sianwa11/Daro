@@ -43,6 +43,17 @@
                                                 </div>
                                             </a>
                                             @endif
+                                                @if($notification->type == 'App\Notifications\VideoChatStarted')
+                                                    <a class="text-body-color-dark media mb-15" href="/notifications">
+                                                        <div class="ml-5 mr-15">
+                                                            <i class="fa fa-fw fa-check text-success"></i>
+                                                        </div>
+                                                        <div class="media-body pr-10">
+                                                            <p class="mb-0">Meeting started, password: {{$notification->data['video_chat_password']}}</p>
+                                                            <div class="text-muted font-size-sm font-italic">{{$notification->created_at->diffForHumans()}}</div>
+                                                        </div>
+                                                    </a>
+                                                @endif
                                         </li>
                                     @empty
                                         <li>
