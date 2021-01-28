@@ -20,7 +20,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($meeting_details as $details)
+                @forelse($meeting_details->sortByDesc('created_at') as $details)
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td class="text-center">{{$details->video_chat_password}}</td>
